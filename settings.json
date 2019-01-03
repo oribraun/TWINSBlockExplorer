@@ -95,7 +95,7 @@
     "coin": "SINS",
     "exchange": "BTC",
     "enabled": ["cryptopia"],
-    "cryptopia_id": "4713",
+    "cryptopia_id": "6217",
     "ccex_key" : "2143734f218a404e865abdc4221f9d06",
     "default": "cryptopia"
   },
@@ -141,7 +141,7 @@
   // HEAVY: retreive from heavys getsupply api call
   // BALANCES : total of all address balances
   // TXOUTSET : retreive from gettxoutsetinfo api call
-  "supply": "COINBASE",
+  "supply": "TXOUTSET",
 
   // how to acquire network hashrate
   // getnetworkhashps: uses getnetworkhashps api call, returns in GH/s
