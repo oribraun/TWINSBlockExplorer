@@ -68,6 +68,9 @@
     "facebook": false,
     "googleplus": false,
     "youtube": false,
+    "discordapp": true,
+    "telegram": true,
+    "bitcointalk": true,
     "search": true,
     "movement": true,
     "network": true
@@ -117,10 +120,13 @@
   },
 
   // twitter, facebook, googleplus, youtube
-  "twitter": "iquidus",
-  "facebook": "yourfacebookpage",
-  "googleplus": "yourgooglepluspage",
-  "youtube": "youryoutubechannel",
+  "twitter": "TWINS_Coin",
+  "facebook": "win.win",
+  "googleplus": "win.win",
+  "youtube": "win.win",
+  "discordapp": "invite/zZbnYKV",
+  "telegram": "joinchat/DPPFqQywNTYQCvPr3h2JaA",
+  "bitcointalk": "index.php?topic=5082894.0",
 
   //genesis
   "genesis_tx": "4c0b221ab5d5e2a22efe8cc6aceed7a81b11e145f05988740cd6de38efc4be1f",

@@ -5,7 +5,7 @@ html
     link(rel='stylesheet', href='/themes/#{settings.theme}/bootstrap.min.css')
     link(rel='stylesheet', href='/vendor/jqplot/jquery.jqplot.css')
     link(rel='stylesheet', href='//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css')
-    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
@@ -96,10 +96,10 @@ html
             img(src='#{settings.logo}', style='max-width:100%;max-height:100%;')
         .collapse.navbar-collapse(id='navbar-collapse')
           ul.nav.navbar-nav
-            li#home
-              a.navbar-link(href='/') 
-                span.glyphicon.glyphicon-search
-                span.menu-text #{settings.locale.menu_explorer}
+            //li#home
+            //  a.navbar-link(href='/')
+            //    span.glyphicon.glyphicon-search
+            //    span.menu-text #{settings.locale.menu_explorer}
             if settings.heavy == true
               li#reward
                 a.navbar-link(href='/reward')
@@ -210,36 +210,59 @@ html
             input.form-control(type='text', name='search', placeholder='#{settings.locale.ex_search_message}', style='min-width:80%;margin-right:5px;')
             button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}
     block content
-    .navbar.navbar-default.navbar-fixed-bottom.hidden-xs
-      .col-md-4
-        if settings.display.twitter
-          ul.nav.navbar-nav
-            li.pull-left
-              a#twitter-icon(href="https://twitter.com/#{settings.twitter}", target='_blank')
-                span.glyphicon.fa.fa-twitter
-        if settings.display.facebook
-          ul.nav.navbar-nav
-            li.pull-left
-              a#facebook-icon(href="https://www.facebook.com/#{settings.facebook}", target='_blank')
-                span.glyphicon.fa.fa-facebook
-        if settings.display.googleplus
-          ul.nav.navbar-nav
-            li.pull-left
-              a#googleplus-icon(href="https://plus.google.com/#{settings.googleplus}", target='_blank')
-                span.glyphicon.fa.fa-google-plus
-        if settings.display.youtube
-          ul.nav.navbar-nav
-            li.pull-left
-              a#youtube-icon(href="https://www.youtube.com/channel/#{settings.youtube}", target='_blank')
-                span.glyphicon.fa.fa-youtube
-     .col-md-4
-        ul.nav
-          li.text-center(style='margin-left:80px;margin-right:80px;')
-            p(style='margin-top:15px;') 
-              a.navbar-link(href='https://github.com/iquidus/explorer', target='_blank') Powered by Iquidus Explorer 
-      span.connections
-        label#lblBlockcount.label.label-default -
-        label#lblConnections.label.label-default -
+    .navbar.navbar-default.navbar-fixed-bottom
+      .row
+        .col-md-4.col-xs-12.navbar-nav-mobile
+          div
+            if settings.display.twitter
+              ul.nav.navbar-nav.my-footer-navbar
+                li.pull-left
+                  a#twitter-icon(href="https://twitter.com/#{settings.twitter}", target='_blank')
+                    span.glyphicon.fa.fa-twitter
+            if settings.display.facebook
+              ul.nav.navbar-nav.my-footer-navbar
+                li.pull-left
+                  a#facebook-icon(href="https://www.facebook.com/#{settings.facebook}", target='_blank')
+                    span.glyphicon.fa.fa-facebook
+            if settings.display.googleplus
+              ul.nav.navbar-nav.my-footer-navbar
+                li.pull-left
+                  a#googleplus-icon(href="https://plus.google.com/#{settings.googleplus}", target='_blank')
+                    span.glyphicon.fa.fa-google-plus
+            if settings.display.youtube
+              ul.nav.navbar-nav.my-footer-navbar
+                li.pull-left
+                  a#youtube-icon(href="https://www.youtube.com/channel/#{settings.youtube}", target='_blank')
+                    span.glyphicon.fa.fa-youtube
+            if settings.display.discordapp
+              ul.nav.navbar-nav.my-footer-navbar
+                li.pull-left
+                  a#discord-icon(href="https://discordapp.com/#{settings.discordapp}", target='_blank')
+                    <svg style="width: 16px;vertical-align: bottom;" aria-hidden="true" data-prefix="fab" data-icon="discord" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-discord fa-w-14 fa-lg"><path fill="currentColor" d="M297.216 243.2c0 15.616-11.52 28.416-26.112 28.416-14.336 0-26.112-12.8-26.112-28.416s11.52-28.416 26.112-28.416c14.592 0 26.112 12.8 26.112 28.416zm-119.552-28.416c-14.592 0-26.112 12.8-26.112 28.416s11.776 28.416 26.112 28.416c14.592 0 26.112-12.8 26.112-28.416.256-15.616-11.52-28.416-26.112-28.416zM448 52.736V512c-64.494-56.994-43.868-38.128-118.784-107.776l13.568 47.36H52.48C23.552 451.584 0 428.032 0 398.848V52.736C0 23.552 23.552 0 52.48 0h343.04C424.448 0 448 23.552 448 52.736zm-72.96 242.688c0-82.432-36.864-149.248-36.864-149.248-36.864-27.648-71.936-26.88-71.936-26.88l-3.584 4.096c43.52 13.312 63.744 32.512 63.744 32.512-60.811-33.329-132.244-33.335-191.232-7.424-9.472 4.352-15.104 7.424-15.104 7.424s21.248-20.224 67.328-33.536l-2.56-3.072s-35.072-.768-71.936 26.88c0 0-36.864 66.816-36.864 149.248 0 0 21.504 37.12 78.08 38.912 0 0 9.472-11.52 17.152-21.248-32.512-9.728-44.8-30.208-44.8-30.208 3.766 2.636 9.976 6.053 10.496 6.4 43.21 24.198 104.588 32.126 159.744 8.96 8.96-3.328 18.944-8.192 29.44-15.104 0 0-12.8 20.992-46.336 30.464 7.68 9.728 16.896 20.736 16.896 20.736 56.576-1.792 78.336-38.912 78.336-38.912z" class=""></path></svg>
+            if settings.display.telegram
+              ul.nav.navbar-nav.my-footer-navbar
+                li.pull-left
+                  a#telegram-icon(href="https://t.me/#{settings.telegram}", target='_blank')
+                    span.glyphicon.fa.fa-telegram
+            if settings.display.bitcointalk
+              ul.nav.navbar-nav.my-footer-navbar
+                li.pull-left
+                  a#bitcoin-icon(href="https://bitcointalk.org/#{settings.bitcointalk}", target='_blank')
+                    span.glyphicon.fa.fa-btc
+              ul.nav.navbar-nav.my-footer-navbar
+                li.pull-left
+                  a#github-icon(href="https://github.com/winwin-official", target='_blank')
+                    span.glyphicon.fa.fa-github
+        .col-md-4.col-xs-12
+          ul.nav
+            li.text-center(style='margin-left:80px;margin-right:80px;')
+              p(style='margin-top:15px;')
+                a.navbar-link(href='https://github.com/winwin-official', target='_blank') Twins Explorer
+        .col-md-4.col-xs-12.navbar-nav-mobile
+          div
+            span.connections.pull-right
+              label#lblBlockcount.label.label-default -
+              label#lblConnections.label.label-default -
 
 
               
