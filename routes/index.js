@@ -133,7 +133,8 @@ router.get('/', function(req, res) {
 });
 
 router.get('/info', function(req, res) {
-  res.render('info', { active: 'info', address: settings.address, hashes: settings.api });
+  // res.render('info', { active: 'info', address: request.headers.host, hashes: settings.api });
+    res.render('info', { active: 'info', address: req.headers.host, hashes: settings.api });
 });
 
 router.get('/markets/:market', function(req, res) {
@@ -411,7 +412,8 @@ router.get('/ext/summary', function(req, res) {
                                 masternodesCount: masterNodesCount,
                                 lastPrice: stats.last_price,
                                 connections: connections,
-                                blockcount: blockcount
+                                blockcount: blockcount,
+                                host: req.headers.host,
                             }]
                         });
                     });

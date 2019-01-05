@@ -5,6 +5,7 @@
 */
 {
     // menu items
+    "menu_home": "Home",
     "menu_explorer": "Explorer",
     "menu_api": "API",
     "menu_markets": "Markets",

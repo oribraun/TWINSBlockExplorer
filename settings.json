@@ -5,9 +5,9 @@
 */
 {
   // name your instance!
-  "title": "Win.Win",
+  "title": "TWINS Blockchain Explorer",
 
-  "address": "127.0.0.1:3001",
+  "address": "test.win.win:3001",
 
   // coin name
   "coin": "sinsCoin",

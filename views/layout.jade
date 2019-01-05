@@ -92,14 +92,14 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/')
+          a.navbar-brand(href='https://win.win/' target='_blank')
             img(src='#{settings.logo}', style='max-width:100%;max-height:100%;')
         .collapse.navbar-collapse(id='navbar-collapse')
           ul.nav.navbar-nav
-            //li#home
-            //  a.navbar-link(href='/')
-            //    span.glyphicon.glyphicon-search
-            //    span.menu-text #{settings.locale.menu_explorer}
+            li#home
+              a.navbar-link(href='/')
+                span.glyphicon.glyphicon-home
+                span.menu-text #{settings.locale.menu_home}
             if settings.heavy == true
               li#reward
                 a.navbar-link(href='/reward')
@@ -262,7 +262,7 @@ html
           ul.nav
             li.text-center(style='margin-left:80px;margin-right:80px;')
               p(style='margin-top:15px;')
-                a.navbar-link(href='https://github.com/winwin-official', target='_blank') Twins Explorer
+                a.navbar-link(href='https://github.com/winwin-official', target='_blank') TWINS Blockchain Explorer
         .col-md-4.col-xs-12.navbar-nav-mobile
           div
             span.connections.pull-right
