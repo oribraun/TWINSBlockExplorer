@@ -464,12 +464,12 @@ router.get('/ext/getpeerinfo', function(req, res) {
             for(var i in peerinfo)
             {
                 var obj = peerinfo[i];
-		var addr = obj.addr;
+		    var addr = obj.addr;
                 if(addr.indexOf(":") > -1) {
                     addr.substr(0,addr.indexOf(":"))
                 }
                 var geo = geoip.lookup(addr);
-		if(geo && geo.ll && geo.ll.length > 1) {
+		    if(geo && geo.ll && geo.ll.length > 1) {
                     mapdata.push(geo.ll[0]);
                     mapdata.push(geo.ll[1]);
                     mapdata.push(0.1);
@@ -479,5 +479,53 @@ router.get('/ext/getpeerinfo', function(req, res) {
             res.send([data]);
         }
     })
-})
+});
+
+router.get('/ext/coindetails', function(req, res) {
+    lib.get_blockcount(function(blockcount) {
+        lib.get_masternodecount(function(masternodecount){
+            db.get_cmc(settings.coinmarketcap.ticker, function(cmc){
+                db.get_stats(settings.coin, function (stats) {
+                    db.get_latest_masternodestats(settings.symbol, function(mnStats) {
+                        var blocks_24h = (24*3600)/settings.coininfo.block_time_sec;
+
+                        var data = {
+                            coin_name: settings.coin,
+                            symbol: settings.symbol,
+                            logo: settings.logo,
+                            mobile_app_v: 1,
+                            supply: stats.supply,
+                            last_price_btc: stats.last_price,
+                            last_price_usd: cmc.price_usd,
+                            market_cap_usd: cmc.market_cap_usd,
+                            market_volume_24h_usd: cmc.volume_24h_usd,
+                            price_perc_change_1h: cmc.percent_change_1h,
+                            price_perc_change_24h: cmc.percent_change_24h,
+                            price_perc_change_7d: cmc.percent_change_7d,
+                            price_last_updated: cmc.last_updated,
+                            block_count_24h: (24*3600) / settings.coininfo.block_time_sec,
+                            block_time: settings.coininfo.block_time_sec,
+                            masternode_count_total: masternodecount.total,
+                            masternode_count_enabled: masternodecount.stable,
+                            masternode_required_coins: settings.coininfo.masternode_required,
+                            masternode_coin_rewards_24h: (blocks_24h * settings.coininfo.block_reward_mn)/masternodecount.stable,
+                            block_mn_reward: settings.coininfo.block_reward_mn,
+                            info_links: settings.coininfo.basic_info_links,
+                            calculations_bases_on_real_data: false
+                        };
+
+                        if (mnStats) {
+                            data.calculations_bases_on_real_data = true;
+                            data.masternode_coin_rewards_24h = mnStats.reward_coins_24h;
+                            data.block_count_24h = mnStats.block_count_24h;
+                            data.block_time = mnStats.block_avg_time;
+                        }
+
+                        res.send(data);
+                    });
+                });
+            });
+        });
+    });
+});
 module.exports = router;
