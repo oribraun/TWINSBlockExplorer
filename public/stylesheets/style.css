@@ -203,3 +203,45 @@ tr {
 	}
 }
 
+.coin-info {
+
+}
+
+.coin-info h2 {
+	margin: 3px;
+	padding: 0;
+}
+
+.coin-info h5.sub {
+	margin: 0;
+	padding: 0;
+	color: #ababab;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.coin-info .info-row {
+	min-height: 100px;
+	padding-top: 10px;
+	margin: 10px;
+}
+
+.coin-info .row.earnings {
+	margin-bottom: 5px;
+}
+
+h2, h4, h5, .h2, .h4, .h5 {
+	font-family: 'Jura', sans-serif;
+	font-size: 15px;
+}
+
+a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a:hover, a:focus {
+	color: #ffffff;
+	text-decoration: underline;
+}
+

@@ -56,6 +56,16 @@ db.connect(dbString, function() {
     }); 
   }
 
+  // CoinMarketCap
+  db.check_cmc(settings.coinmarketcap.ticker, function (exists) {
+      if (exists === false) {
+          console.log("No CoinMarketCap entry found for ticker "+settings.coinmarketcap.ticker+". Creating now...");
+          db.create_cmc(settings.coinmarketcap.ticker, function () {
+
+          });
+      }
+  });
+
   var server = app.listen(app.get('port'), function() {
     debug('Express server listening on port ' + server.address().port);
   });
