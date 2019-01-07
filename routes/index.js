@@ -439,7 +439,7 @@ router.get('/ext/getmasternodes', function(req, res) {
 })
 router.get('/ext/getmasternodesmap', function(req, res) {
     lib.get_listmasternodes(function(listmasternodes) {
-        if(listmasternodes && listmasternodes.length) {
+        if(listmasternodes) {
           var limit_activetime = 5000000;
 	  var limit_percent = 0.3;
           var data = [];
