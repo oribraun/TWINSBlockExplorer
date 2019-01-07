@@ -116,13 +116,13 @@
   // high flag: greater than this value flagged red
   "movement": {
     "min_amount": 100,
-    "low_flag": 1000,
-    "high_flag": 5000
+    "low_flag": 9999999,
+    "high_flag": 10000000
   },
 
   // Coin info page
   "coininfo": {
-    "masternode_required": 1000,
+    "masternode_required": 1000000,
     "block_time_sec": 120,
     "block_reward_mn": 5
   },
