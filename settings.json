@@ -129,7 +129,8 @@
 
   // CoinMarketCap integration
   "coinmarketcap": {
-    "ticker": "bitcoin"
+//    "ticker": "bitcoin"
+    "ticker": "TWINS"
 //    "ticker": "safeinsure"
   },
 

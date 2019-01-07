@@ -259,7 +259,8 @@ router.get('/coininfo', function(req, res) {
                     var coinsLocked = totalMnCount.total * settings.coininfo.masternode_required;
                     var coinsLockedPerc = coinsLocked / (stats.supply/100);
                     var nodeWorthBtc = (settings.coininfo.masternode_required * priceBtc).toFixed(8);
-                    var nodeWorthUsd = (cmc.price_usd) ? (settings.coininfo.masternode_required * cmc.price_usd).toFixed(2) : null;
+                    // var nodeWorthUsd = (cmc.price_usd) ? (settings.coininfo.masternode_required * cmc.price_usd).toFixed(2) : null;
+                    var nodeWorthUsd = (settings.coininfo.masternode_required * cmc.price_usd).toFixed(2);
 
                     var dailyCoin = formatNum(mnRewardsPerDay, { maxFraction: 4});
                     var dailyBtc = formatNum(mnRewardsPerDay * priceBtc, { maxFraction: 8 });
@@ -290,9 +291,10 @@ router.get('/coininfo', function(req, res) {
                         supply: formatNum(stats.supply, { maxFraction: 4 }),
                         coinsLocked: formatNum(coinsLocked, { maxFraction: 8 }),
                         coinsLockedPerc: formatNum(coinsLockedPerc, { maxFraction: 2 }),
-                        mnRequiredCoins: settings.coininfo.masternode_required,
+                        mnRequiredCoins: formatNum(settings.coininfo.masternode_required, { maxFraction: 2 }),
                         nodeWorthBtc: formatCurrency(nodeWorthBtc, { maxFraction: 8 }),
-                        nodeWorthUsd: nodeWorthUsd ? formatCurrency(nodeWorthUsd, { maxFraction: 2 }) : null,
+                        // nodeWorthUsd: nodeWorthUsd ? formatCurrency(nodeWorthUsd, { maxFraction: 2 }) : null,
+                        nodeWorthUsd: formatCurrency(nodeWorthUsd, { maxFraction: 2 }),
                         dailyCoin: dailyCoin,
                         dailyBtc: dailyBtc,
                         dailyUsd: dailyUsd,
@@ -439,7 +441,7 @@ router.get('/ext/getmasternodes', function(req, res) {
 })
 router.get('/ext/getmasternodesmap', function(req, res) {
     lib.get_listmasternodes(function(listmasternodes) {
-        if(listmasternodes) {
+        if(listmasternodes && listmasternodes.length) {
           var limit_activetime = 5000000;
 	  var limit_percent = 0.3;
           var data = [];
