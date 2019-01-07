@@ -80,11 +80,11 @@ block content
                                         h4 #{activeMasternodes} / #{totalMasternodes}
                                         h5.sub Active / Total nodes
                                     .col-md-4
-                                        h4 #{mnRequiredCoins}
+                                        h4 #{mnRequiredCoins} #{settings.symbol}
                                         h5.sub Required coins
                                     .col-md-4
                                         h4
-                                            span #{nodeWorthBtc} TWINS
+                                            span #{nodeWorthBtc} BTC
                                                 //if nodeWorthUsd
                                                 span  / $#{nodeWorthUsd}
                                         h5.sub Node worth
@@ -92,7 +92,7 @@ block content
                                     <hr>
                                 .row.text-left
                                     .col-md-12
-                                        h4 Estimated earnings (Coin/BTC/USD)
+                                        h4 Estimated earnings (#{settings.symbol}/BTC/USD)
                                 .row.earnings
                                     .col-xs-2.col-md-offset-3.text-right
                                         div Daily

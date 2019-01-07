@@ -10,7 +10,7 @@
   "address": "test.win.win:80",
 
   // coin name
-  "coin": "Twins coin",
+  "coin": "TWINS coin",
 
   // coin symbol
   "symbol": "TWINS",
@@ -99,7 +99,7 @@
     "coin": "TWINS",
     "exchange": "BTC",
     "enabled": ["cryptopia"],
-    "cryptopia_id": "6217",
+    "cryptopia_id": "62177",
     "ccex_key" : "2143734f218a404e865abdc4221f9d06",
     "default": "cryptopia"
   },
