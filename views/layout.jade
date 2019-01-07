@@ -120,11 +120,11 @@ html
                 a.navbar-link(href='/richlist')
                   span.fa.fa-btc
                   span.menu-text #{settings.locale.menu_richlist}
-            if settings.display.markets == true
-              li#markets
-                a.navbar-link.loading(href='/markets/#{settings.markets.default}')
-                  span.fa.fa-line-chart
-                  span.menu-text #{settings.locale.menu_markets}
+            //if settings.display.markets == true
+            //  li#markets
+            //    a.navbar-link.loading(href='/markets/#{settings.markets.default}')
+            //      span.fa.fa-line-chart
+            //      span.menu-text #{settings.locale.menu_markets}
             if settings.display.masternodes == true
               li#masternodeslist
                 a.navbar-link.loading(href='/masternodes')

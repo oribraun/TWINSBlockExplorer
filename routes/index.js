@@ -238,8 +238,13 @@ router.get('/coininfo', function(req, res) {
                 db.get_latest_masternodestats(settings.symbol, function(mnStats) {
                     var blocksPerDay = (60*60*24)/settings.coininfo.block_time_sec;
                     var totalMnRewardsDay = settings.coininfo.block_reward_mn * blocksPerDay;
-                    var mnRewardsPerDay = totalMnRewardsDay / totalMnCount.stable;
-                    console.log("cmc",cmc)
+                    var mnRewardsPerDay;
+                    if(totalMnCount.stable) {
+                        mnRewardsPerDay = totalMnRewardsDay / totalMnCount.stable;
+                    } else {
+                        mnRewardsPerDay = 0;
+                    }
+                    // console.log("cmc",cmc)
                     var priceBtc = (cmc.price_btc) ? cmc.price_btc : stats.last_price;
                     var priceUsd = cmc.price_usd;
 
@@ -425,7 +430,7 @@ router.get('/ext/summary', function(req, res) {
 });
 router.get('/ext/getmasternodes', function(req, res) {
     lib.get_listmasternodes(function(listmasternodes) {
-        if(listmasternodes && listmasternodes.length) {
+        if(listmasternodes) {
             res.send({
                 data: listmasternodes
             });

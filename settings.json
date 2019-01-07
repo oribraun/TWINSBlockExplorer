@@ -7,13 +7,13 @@
   // name your instance!
   "title": "TWINS Blockchain Explorer",
 
-  "address": "test.win.win:3001",
+  "address": "test.win.win:80",
 
   // coin name
-  "coin": "sinsCoin",
+  "coin": "Twins coin",
 
   // coin symbol
-  "symbol": "SINS",
+  "symbol": "TWINS",
 
   // logo
   "logo": "/images/logo.svg",
@@ -96,7 +96,7 @@
   //supported markets: bittrex, poloniex, yobit, empoex, bleutrade, cryptopia, ccex
   //default market is loaded by default and determines last price in header
   "markets": {
-    "coin": "SINS",
+    "coin": "TWINS",
     "exchange": "BTC",
     "enabled": ["cryptopia"],
     "cryptopia_id": "6217",
