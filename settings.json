@@ -87,9 +87,9 @@
   // ensure links on API page are valid
   "api": {
     "blockindex":1101 ,
-    "blockhash": "0d8d94c722fb2b31f46f499bda92c2b4fb212ac485bbb433a72d683c102ccf1f",
-    "txhash": "ed7264541cb58fb7a331cdb670192096db9b719690b3964e132018ae3dbfefff",
-    "address": "STGfBwWCb1rP1AaQrjffwbXzferA7Xtdcc"
+    "blockhash": "00000387d77fa2967f3e6504398aa8dea3db4337eb7640631ff9b65984f2327b",
+    "txhash": "28ca7c0197d430a19fa879000bef9f747c8b95b296afc9b1b80893b443b6e622",
+    "address": "WQEsf58CyRUj6JjgpmVYw69qkwudLVbfX4"
   },
 
   // market settings
@@ -144,8 +144,8 @@
   "bitcointalk": "index.php?topic=5082894.0",
 
   //genesis
-  "genesis_tx": "4c0b221ab5d5e2a22efe8cc6aceed7a81b11e145f05988740cd6de38efc4be1f",
-  "genesis_block": "00000a15cee886438566bd86131a3d16490c8463ae1b19399371e21b66c09069",
+  "genesis_tx": "4271a3d993d6157f960de646ce8dfad07989dfd0703064f8056d1a7287283d06",
+  "genesis_block": "0000071cf2d95aec5ba4818418756c93cb12cd627191710e8969f2f35c3530de",
 
   //heavy (enable/disable additional heavy features)
   "heavy": false,
