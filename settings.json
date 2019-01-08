@@ -74,7 +74,7 @@
     "search": true,
     "movement": true,
     "coininfo": true,
-    "network": true
+    "network": false
   },
 
   // index page (valid options for difficulty are POW, POS or Hybrid)
