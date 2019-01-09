@@ -37,7 +37,9 @@ mongoose.connect(dbString, function(err) {
                 address: address,
                 protocol: body[i].version,
                 version: body[i].subver.replace('/', '').replace('/', ''),
-                country: geo.country_name
+                country: geo.country_name,
+                lastactivity: Math.max(body[i].lastrecv, body[i].lastsend),
+                connectiontime: body[i].conntime,
               }, function(){
                 loop.next();
               });

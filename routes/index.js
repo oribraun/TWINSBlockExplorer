@@ -443,7 +443,7 @@ router.get('/ext/getmasternodesmap', function(req, res) {
     lib.get_listmasternodes(function(listmasternodes) {
         if(listmasternodes && listmasternodes.length) {
           var limit_activetime = 5000000;
-	  var limit_percent = 0.3;
+          var limit_percent = 0.3;
           var data = [];
           var mapdata = [];
           data.push("1");
@@ -462,33 +462,57 @@ router.get('/ext/getmasternodesmap', function(req, res) {
         }
     })
 })
-router.get('/ext/getpeerinfo', function(req, res) {
-    lib.get_peerinfo(function(peerinfo) {
-        if(peerinfo && peerinfo.length) {
-            var limit_activetime = 5000000;
+router.get('/ext/getpeersmap', function(req, res) {
+    db.get_peers(function(peers){
+        if(peers) {
+            var limit_activetime = 86400; // 60*60*24
             var limit_percent = 0.3;
             var data = [];
             var mapdata = [];
             data.push("1");
-            for(var i in peerinfo)
+            for(var i in peers)
             {
-                var obj = peerinfo[i];
-		    var addr = obj.addr;
-                if(addr.indexOf(":") > -1) {
-                    addr.substr(0,addr.indexOf(":"))
-                }
-                var geo = geoip.lookup(addr);
-		    if(geo && geo.ll && geo.ll.length > 1) {
+                var obj = peers[i];
+                var connectionTime = new Date().getTime()/1000 - obj.connectiontime;
+                var geo = geoip.lookup(obj.address);
+                if(geo && geo.ll && geo.ll.length > 1) {
                     mapdata.push(geo.ll[0]);
                     mapdata.push(geo.ll[1]);
-                    mapdata.push(0.1);
+                    mapdata.push(connectionTime >= limit_activetime ? limit_percent : (connectionTime / limit_activetime * limit_percent).toFixed(3));
                 }
             }
             data.push(mapdata);
             res.send([data]);
         }
     })
-});
+})
+// router.get('/ext/getpeerinfo', function(req, res) {
+//     lib.get_peerinfo(function(peerinfo) {
+//         if(peerinfo && peerinfo.length) {
+//             var limit_activetime = 5000000;
+//             var limit_percent = 0.3;
+//             var data = [];
+//             var mapdata = [];
+//             data.push("1");
+//             for(var i in peerinfo)
+//             {
+//                 var obj = peerinfo[i];
+// 		    var addr = obj.addr;
+//                 if(addr.indexOf(":") > -1) {
+//                     addr.substr(0,addr.indexOf(":"))
+//                 }
+//                 var geo = geoip.lookup(addr);
+// 		    if(geo && geo.ll && geo.ll.length > 1) {
+//                     mapdata.push(geo.ll[0]);
+//                     mapdata.push(geo.ll[1]);
+//                     mapdata.push(0.1);
+//                 }
+//             }
+//             data.push(mapdata);
+//             res.send([data]);
+//         }
+//     })
+// });
 
 router.get('/ext/coindetails', function(req, res) {
     lib.get_blockcount(function(blockcount) {
